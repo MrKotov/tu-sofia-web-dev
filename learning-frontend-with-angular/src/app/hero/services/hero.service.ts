@@ -18,4 +18,8 @@ export class HeroService {
       heroDto
     );
   }
+
+  deleteHero(id: number): Observable<any> {
+    return this.http.delete<any>(`${environment.backendUrl}/hero/${id}`);
+  }
 }

@@ -38,6 +38,17 @@ export class HeroListComponent implements OnInit {
     this.hero = {} as Hero;
   }
 
+  deleteHero(hero: Hero) {
+    this.heroService.deleteHero(hero.id).subscribe({
+      next: (hero) => {
+        this.getHeroes();
+      },
+      error: (err) => {
+        console.error(err);
+      },
+    });
+  }
+
   createHero() {
     this.heroService.createHero(this.hero).subscribe({
       next: (hero) => {
